@@ -1,0 +1,3 @@
+Carpeta para manejar la centralizacion de informacion en nuestra aplicacion traida desde la base de datos.
+
+Sirve para manejar estados de como esta la informacion actualmente traida de la base de datos en el frontend.
