@@ -6,6 +6,6 @@ import usersStore from "./store/users-store";
  */
 export const UsersApp = async (element) => {
     element.innerHTML = 'Loading...';
-    const users = await usersStore.loadNextPage();
-    console.log(users)
+    await usersStore.loadNextPage();
+    console.log(usersStore.getUsers())
 }

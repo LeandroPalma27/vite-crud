@@ -6,8 +6,10 @@ const state = {
 }
 
 const loadNextPage = async () => {
-   const users = await loadUsersByPage(++state.currentPage);
-   return users;
+   const users = await loadUsersByPage(state.currentPage + 1);
+   if (users.length === 0) return;
+   state.currentPage =+ 1;
+   state.users = users; 
 }
 
 const loadPreviousPage = async () => {
@@ -21,9 +23,6 @@ const onUserChanged = () => {
 
 const reloadPage = async () => {
     throw new Error('No esta implementado.');
-
-
-
 }
 
 export default{
