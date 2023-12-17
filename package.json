@@ -11,6 +11,11 @@
   },
   "devDependencies": {
     "json-server": "^0.17.4",
+    "sass": "^1.69.5",
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2"
   }
 }
