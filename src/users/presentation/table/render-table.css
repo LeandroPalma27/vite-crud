@@ -1,0 +1,16 @@
+#users-table {
+    background-color: rgb(57, 57, 57);
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 10px 11px 23px -7px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 11px 23px -7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 11px 23px -7px rgba(0, 0, 0, 0.75);
+}
+
+#users-table>* {
+    color: white;
+}
+
+#users-table th, td {
+    padding: 5px 20px;
+}

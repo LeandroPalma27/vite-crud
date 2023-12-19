@@ -25,12 +25,19 @@ const reloadPage = async () => {
     throw new Error('No esta implementado.');
 }
 
-export default{
+export default {
     loadNextPage,
     loadPreviousPage,
     onUserChanged,
     reloadPage,
-
+    /**
+     * 
+     * @returns {User[]}
+     */
     getUsers: () => [...state.users],
+    /**
+     * 
+     * @returns {Number}
+     */
     getCurrentPage: () => state.currentPage,
 }
