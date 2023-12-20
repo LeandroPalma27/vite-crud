@@ -12,5 +12,4 @@ export const UsersApp = async (element) => {
     element.innerHTML = '';
     RenderTable(element);
     RenderPaginationButtons(element);
-    console.log(usersStore.getUsers())
 }

@@ -6,14 +6,19 @@ const state = {
 }
 
 const loadNextPage = async () => {
-   const users = await loadUsersByPage(state.currentPage + 1);
-   if (users.length === 0) return;
-   state.currentPage =+ 1;
-   state.users = users; 
+    const users = await loadUsersByPage(state.currentPage + 1);
+    if (users.length === 0) return;
+    // Siempre la concatenacion va en ese orden xD
+    state.currentPage += 1;
+    state.users = users;
 }
 
 const loadPreviousPage = async () => {
-    throw new Error('No esta implementado.');
+    if (state.currentPage - 1 > 0) {
+        const users = await loadUsersByPage(state.currentPage - 1);
+        state.currentPage -= 1;
+        state.users = users;
+    }
 }
 
 const onUserChanged = () => {
