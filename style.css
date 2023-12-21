@@ -26,3 +26,8 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+}

@@ -40,7 +40,7 @@ export const RenderPaginationButtons = async (element) => {
     nextButton.addEventListener('click', async (target) => {
         await usersStore.loadNextPage();
         currentPageSpace.innerHTML = usersStore.getCurrentPage();
-        const divButtons = element.lastElementChild;
+        const divButtons = element.firstElementChild.nextElementSibling;
         divButtons.remove();
         RenderTable(element);
         RenderPaginationButtons(element);
@@ -49,7 +49,7 @@ export const RenderPaginationButtons = async (element) => {
     prevButton.addEventListener('click', async (target) => {
         await usersStore.loadPreviousPage();
         currentPageSpace.innerHTML = usersStore.getCurrentPage();
-        const divButtons = element.lastElementChild;
+        const divButtons = element.firstElementChild.nextElementSibling;
         divButtons.remove();
         RenderTable(element);
         RenderPaginationButtons(element);
