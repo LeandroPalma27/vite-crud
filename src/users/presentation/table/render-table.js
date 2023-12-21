@@ -46,7 +46,7 @@ export const RenderTable = (element) => {
                 <td>${user.lastName}</td>
                 <td>${user.gender}</td>
                 <td>${user.balance}</td>
-                <td>${user.isActive}</td>
+                <td class="td-active">${user.isActive ? '<span class="user-active"><i class="fa-solid fa-circle-check"></i></span>' : '<span class="user-not-active"><i class="fa-solid fa-circle-xmark"></i></span>'}</td>
                 <td><button type="button" class="btn btn-primary">Detail</button></td>
             </tr>
         `

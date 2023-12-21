@@ -14,3 +14,32 @@
 #users-table th, td {
     padding: 5px 20px;
 }
+
+td {
+    height: 45px;
+    box-sizing: border-box;
+}
+
+.td-active {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.user-active {
+    color: green;
+    display: flex;
+    border-radius: 19px;
+    background-color: white;
+    border: 0px;
+}
+
+.user-not-active {
+    color: red;
+    display: flex;
+    border-radius: 19px;
+    background-color: white;
+    border: 0px;
+}

@@ -1,11 +1,12 @@
 import usersStore from '../../store/users-store';
 import './render-pagination-buttons.css';
 import {RenderTable} from '../table/render-table';
+import { loadUsersByPage } from '../../use-cases/load-users-by-page';
 
 /**
  * @param {HTMLDivElement}
  */
-export const RenderPaginationButtons = (element) => {
+export const RenderPaginationButtons = async (element) => {
     // TODO: Hacer vista detalle para actualizar y eliminar (al hacer dicha accion debemos renderizar la tabla en base al estado que tenga la aplicación en ese entonces)
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList.add('buttons-container');
@@ -28,17 +29,33 @@ export const RenderPaginationButtons = (element) => {
 
     element.append(buttonsContainer)
 
+    if (usersStore.getCurrentPage() <= 1) {
+        prevButton.disabled = true;
+    }
+
+    if ((await loadUsersByPage(usersStore.getCurrentPage() + 1)).length === 0) {
+        nextButton.disabled = true;
+    }
+
     nextButton.addEventListener('click', async (target) => {
         await usersStore.loadNextPage();
         currentPageSpace.innerHTML = usersStore.getCurrentPage();
+        const divButtons = element.lastElementChild;
+        divButtons.remove();
         RenderTable(element);
+        RenderPaginationButtons(element);
     });
 
     prevButton.addEventListener('click', async (target) => {
         await usersStore.loadPreviousPage();
         currentPageSpace.innerHTML = usersStore.getCurrentPage();
+        const divButtons = element.lastElementChild;
+        divButtons.remove();
         RenderTable(element);
+        RenderPaginationButtons(element);
     });
+
+
 
 
 }
