@@ -1,3 +1,4 @@
+import { RenderModalUser } from "./presentation/modal-user/render-modal-user";
 import { RenderPaginationButtons } from "./presentation/pagination-buttons/render-pagination-buttons";
 import { RenderShowModalButton } from "./presentation/show-modal-button/render-show-modal-button";
 import { RenderTable } from "./presentation/table/render-table";
@@ -14,4 +15,5 @@ export const UsersApp = async (element) => {
     RenderTable(element);
     RenderPaginationButtons(element);
     RenderShowModalButton(element);
+    RenderModalUser(element);
 }

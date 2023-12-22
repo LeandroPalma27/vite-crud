@@ -1,3 +1,4 @@
+import { showModal } from '../modal-user/render-modal-user';
 import './render-show-modal-button.css'
 /**
  * @param {HTMLDivElement}
@@ -14,6 +15,6 @@ export const RenderShowModalButton = (element) => {
     element.parentNode.append(divButton);
 
     faButton.addEventListener('click', () => {
-        throw new Error('no esta implementado.');
+        showModal();
     });
 }
