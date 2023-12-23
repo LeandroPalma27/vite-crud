@@ -506,6 +506,14 @@
       "gender": "male",
       "isActive": true,
       "id": 57
+    },
+    {
+      "balance": 2000,
+      "first_name": "Leandro",
+      "last_name": "Palma",
+      "gender": "male",
+      "isActive": true,
+      "id": 58
     }
   ]
 }
