@@ -18,8 +18,9 @@ export const hideModal = () => {
 /**
  * 
  * @param {HTMLDivElement} element 
+ * @param {(userLike) => Promise<void>} callback
  */
-export const RenderModalUser = (element) => {
+export const RenderModalUser = (element, callback) => {
 
     if (divModal) return;
 
@@ -38,7 +39,7 @@ export const RenderModalUser = (element) => {
 
     form = divModal.querySelector('form');
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const formData = new FormData(form);
         const userLike = {};
@@ -47,10 +48,16 @@ export const RenderModalUser = (element) => {
                 userLike[key] = Number(value);
                 continue;
             }
+            if (key === 'isActive') {
+                const isActive = value == 'on' ? true : false;
+                userLike[key] = isActive;
+                continue;
+            }
             userLike[key] = value;
         }
-        // TODO: Parsear datos recibidos del formulario
-        console.log(userLike)
+        userLike.isActive == undefined ? userLike.isActive = false : null;
+
+        await callback(userLike);
         hideModal();
     });
 }

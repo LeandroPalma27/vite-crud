@@ -30,8 +30,8 @@ const createTable = () => {
  * @param {HTMLDivElement}
  */
 export const RenderTable = (element) => {
-
     const users = usersStore.getUsers();
+    console.log(users)
     if (!table) {
         table = createTable();
         element.append(table);

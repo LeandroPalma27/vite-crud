@@ -21,25 +21,25 @@ const loadPreviousPage = async () => {
     }
 }
 
-const onUserChanged = () => {
-    throw new Error('No esta implementado.');
-
+const onUserChangedOrSaved = async () => {
+    const users = await loadUsersByPage(state.currentPage);
+    state.users = users;
 }
 
 const reloadPage = async () => {
     throw new Error('No esta implementado.');
 }
 
+const getUsers = () => {
+    return [...state.users];
+}
+
 export default {
     loadNextPage,
     loadPreviousPage,
-    onUserChanged,
+    onUserChangedOrSaved,
     reloadPage,
-    /**
-     * 
-     * @returns {User[]}
-     */
-    getUsers: () => [...state.users],
+    getUsers,
     /**
      * 
      * @returns {Number}

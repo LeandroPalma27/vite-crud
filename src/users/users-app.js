@@ -3,6 +3,7 @@ import { RenderPaginationButtons } from "./presentation/pagination-buttons/rende
 import { RenderShowModalButton } from "./presentation/show-modal-button/render-show-modal-button";
 import { RenderTable } from "./presentation/table/render-table";
 import usersStore from "./store/users-store";
+import { saveUser } from "./use-cases/save-user";
 
 /**
  * 
@@ -15,5 +16,9 @@ export const UsersApp = async (element) => {
     RenderTable(element);
     RenderPaginationButtons(element);
     RenderShowModalButton(element);
-    RenderModalUser(element);
+    RenderModalUser(element, async (userLike) => {
+        await saveUser(userLike);
+        usersStore.onUserChangedOrSaved();
+        RenderTable(element);
+    });
 }
