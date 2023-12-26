@@ -1,4 +1,5 @@
 import usersStore from '../../store/users-store'
+import { showModal } from '../modal-user/render-modal-user';
 import './render-table.css'
 
 /**
@@ -53,4 +54,10 @@ export const RenderTable = (element) => {
     });
 
     table.lastElementChild.innerHTML = tableHtml;
+
+    table.querySelectorAll('button').forEach(e => {
+        e.addEventListener('click', async (event) => {
+            await showModal(event.target.parentElement.parentElement.firstElementChild.textContent);
+        });
+    });
 }
