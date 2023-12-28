@@ -11,7 +11,7 @@ let loadUser = {};
 
 export const showModal = async (id) => {
     divModal?.classList.remove('hide-modal');
-    loadUser = {};
+    //loadUser = {};
     if (!id) return;
     const user = await loadUserById(id);
     setFormValues(user);
@@ -26,6 +26,8 @@ const setFormValues = (user) => {
     form?.querySelector('[name="lastName"]').setAttribute('value', user.lastName);
     form?.querySelector('[name="balance"]').setAttribute('value', user.balance);
     form?.querySelector('[name="isActive"]').setAttribute(user.isActive ? 'checked' : false, 'checked');
+    if (user.gender === 'male') form?.querySelector('[value="male"]').setAttribute('selected', 'true');
+    if (user.gender === 'female') form?.querySelector('[value="female"]').setAttribute('selected', 'true');
     loadUser = user;
 }
 
@@ -34,10 +36,13 @@ const unsetFormValues = () => {
     form?.querySelector('[name="lastName"]').removeAttribute('value');
     form?.querySelector('[name="balance"]').removeAttribute('value');
     form?.querySelector('[name="isActive"]').removeAttribute('checked');
+    form?.querySelector('[value="male"]').removeAttribute('selected');
+    form?.querySelector('[value="female"]').removeAttribute('selected');
 }
 
 export const hideModal = () => {
     divModal?.classList.add('hide-modal');
+    loadUser = {};
     form?.reset();
     unsetFormValues();
 }
@@ -71,18 +76,13 @@ export const RenderModalUser = (element, callback) => {
         const formData = new FormData(form);
         const userLike = {...loadUser};
         for (const [key, value] of formData) {
+            userLike[key] = value;
             if (key === 'balance') {
                 userLike[key] = Number(value);
                 continue;
             }
-            if (key === 'isActive') {
-                const isActive = value == 'on' ? true : false;
-                userLike[key] = isActive;
-                continue;
-            }
-            userLike[key] = value;
         }
-        userLike.isActive == undefined ? userLike.isActive = false : null;
+        //TODO: ACTUALIZAR ACTIVO Y NO ACTIVO
         await callback(userLike);
         hideModal();
     });

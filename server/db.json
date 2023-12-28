@@ -2,11 +2,11 @@
   "users": [
     {
       "id": 1,
-      "isActive": false,
+      "isActive": true,
       "balance": 1397.32,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Ryan",
-      "last_name": "Kent",
+      "last_name": "Gosling",
       "gender": "male"
     },
     {
@@ -15,7 +15,7 @@
       "balance": 1120.82,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Francine",
-      "last_name": "Ingram",
+      "last_name": "Justin",
       "gender": "female"
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "id": 4,
-      "isActive": false,
+      "isActive": true,
       "balance": 1601.54,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Henry",
@@ -38,7 +38,7 @@
     },
     {
       "id": 5,
-      "isActive": false,
+      "isActive": true,
       "balance": 1455.08,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Mia",
@@ -47,7 +47,7 @@
     },
     {
       "id": 6,
-      "isActive": false,
+      "isActive": true,
       "balance": 2950.3,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Tyler",
@@ -74,7 +74,7 @@
     },
     {
       "id": 9,
-      "isActive": false,
+      "isActive": true,
       "balance": 3586.36,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Sheri",
@@ -535,8 +535,22 @@
       "balance": 1321,
       "first_name": "Leandro",
       "last_name": "Palma",
-      "isActive": true,
+      "isActive": false,
       "id": 61
+    },
+    {
+      "balance": 222,
+      "first_name": "Riyad",
+      "last_name": "Maherez",
+      "isActive": false,
+      "id": 62
+    },
+    {
+      "balance": 1231312,
+      "first_name": "Lee",
+      "last_name": "Howe",
+      "isActive": true,
+      "id": 63
     }
   ]
 }
