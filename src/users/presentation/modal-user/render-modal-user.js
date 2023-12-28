@@ -76,11 +76,11 @@ export const RenderModalUser = (element, callback) => {
         const formData = new FormData(form);
         const userLike = {...loadUser};
         for (const [key, value] of formData) {
-            userLike[key] = value;
             if (key === 'balance') {
                 userLike[key] = Number(value);
                 continue;
             }
+            userLike[key] = value;
         }
         //TODO: ACTUALIZAR ACTIVO Y NO ACTIVO
         await callback(userLike);
