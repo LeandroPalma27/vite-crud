@@ -61,12 +61,20 @@ export const RenderTable = (element) => {
     }));
 
     table.querySelectorAll('.btn-danger').forEach(e => e.addEventListener('click', async (event) => {
-        console.log(event.target.parentElement.parentElement.firstElementChild.textContent)
-        await deleteUserById(event.target.parentElement.parentElement.firstElementChild.textContent);
-        await usersStore.onUserChangedOrSaved();
-        const toDelete = table.parentElement.querySelector('.buttons-container');
-        toDelete.remove();
-        RenderTable(element);
-        RenderPaginationButtons(element);
+        try {
+            if (event.target.tagName === 'path') {
+                await deleteUserById(event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.textContent);
+            } else {
+                await deleteUserById(event.target.parentElement.parentElement.firstElementChild.textContent);
+            }
+            await usersStore.onUserChangedOrSaved();
+            const toDelete = table.parentElement.querySelector('.buttons-container');
+            toDelete.remove();
+            RenderTable(element);
+            RenderPaginationButtons(element);
+        } catch (error) {
+            console.log(error)
+            alert('No se pudo eliminar.');
+        }
     }));
 }
