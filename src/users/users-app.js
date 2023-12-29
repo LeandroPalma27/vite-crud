@@ -19,6 +19,9 @@ export const UsersApp = async (element) => {
     RenderModalUser(element, async (userLike) => {
         await saveUser(userLike);
         await usersStore.onUserChangedOrSaved();
+        const toDelete = element.querySelector('.buttons-container');
+        toDelete.remove();
         RenderTable(element);
+        RenderPaginationButtons(element);
     });
 }

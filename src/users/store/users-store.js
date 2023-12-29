@@ -23,7 +23,11 @@ const loadPreviousPage = async () => {
 
 const onUserChangedOrSaved = async () => {
     const users = await loadUsersByPage(state.currentPage);
-    console.log(users)
+    if (users.length === 0) {
+        const users = await loadUsersByPage(--state.currentPage);
+        state.users = users;
+        return;
+    } 
     state.users = users;
 }
 

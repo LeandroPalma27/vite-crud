@@ -7,6 +7,7 @@ import { loadUsersByPage } from '../../use-cases/load-users-by-page';
  * @param {HTMLDivElement}
  */
 export const RenderPaginationButtons = async (element) => {
+
     // TODO: Hacer vista detalle para actualizar y eliminar (al hacer dicha accion debemos renderizar la tabla en base al estado que tenga la aplicación en ese entonces)
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList.add('buttons-container');

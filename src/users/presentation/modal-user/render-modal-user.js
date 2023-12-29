@@ -11,7 +11,6 @@ let loadUser = {};
 
 export const showModal = async (id) => {
     divModal?.classList.remove('hide-modal');
-    //loadUser = {};
     if (!id) return;
     const user = await loadUserById(id);
     setFormValues(user);
@@ -75,6 +74,9 @@ export const RenderModalUser = (element, callback) => {
         event.preventDefault();
         const formData = new FormData(form);
         const userLike = {...loadUser};
+        if (!formData.get('isActive')) {
+            userLike['isActive'] = false;
+        } 
         for (const [key, value] of formData) {
             if (key === 'balance') {
                 userLike[key] = Number(value);
@@ -82,7 +84,6 @@ export const RenderModalUser = (element, callback) => {
             }
             userLike[key] = value;
         }
-        //TODO: ACTUALIZAR ACTIVO Y NO ACTIVO
         await callback(userLike);
         hideModal();
     });

@@ -1,5 +1,7 @@
 import usersStore from '../../store/users-store'
+import { deleteUserById } from '../../use-cases/delete-user-by-id';
 import { showModal } from '../modal-user/render-modal-user';
+import { RenderPaginationButtons } from '../pagination-buttons/render-pagination-buttons';
 import './render-table.css'
 
 /**
@@ -32,7 +34,6 @@ const createTable = () => {
  */
 export const RenderTable = (element) => {
     const users = usersStore.getUsers();
-    console.log(users)
     if (!table) {
         table = createTable();
         element.append(table);
@@ -48,16 +49,24 @@ export const RenderTable = (element) => {
                 <td>${user.gender}</td>
                 <td>${user.balance}</td>
                 <td class="td-active">${user.isActive ? '<span class="user-active"><i class="fa-solid fa-circle-check"></i></span>' : '<span class="user-not-active"><i class="fa-solid fa-circle-xmark"></i></span>'}</td>
-                <td><button type="button" class="btn btn-primary">Detail</button></td>
+                <td><button type="button" class="btn btn-primary">Detail</button> | <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
         `
     });
 
     table.lastElementChild.innerHTML = tableHtml;
 
-    table.querySelectorAll('button').forEach(e => {
-        e.addEventListener('click', async (event) => {
-            await showModal(event.target.parentElement.parentElement.firstElementChild.textContent);
-        });
-    });
+    table.querySelectorAll('.btn-primary').forEach(e => e.addEventListener('click', async (event) => {
+        await showModal(event.target.parentElement.parentElement.firstElementChild.textContent);
+    }));
+
+    table.querySelectorAll('.btn-danger').forEach(e => e.addEventListener('click', async (event) => {
+        console.log(event.target.parentElement.parentElement.firstElementChild.textContent)
+        await deleteUserById(event.target.parentElement.parentElement.firstElementChild.textContent);
+        await usersStore.onUserChangedOrSaved();
+        const toDelete = table.parentElement.querySelector('.buttons-container');
+        toDelete.remove();
+        RenderTable(element);
+        RenderPaginationButtons(element);
+    }));
 }
